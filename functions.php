@@ -17,7 +17,7 @@ function hello_elementor_child_enqueue_scripts() {
 		[
 			'hello-elementor-theme-style',
 		],
-		'1.0.2'
+		'1.0.4'
 	);
 }
 add_action( 'wp_enqueue_scripts', 'hello_elementor_child_enqueue_scripts', 20 );
