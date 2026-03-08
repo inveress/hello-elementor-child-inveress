@@ -66,11 +66,6 @@ add_post_type_support( 'page', 'excerpt' );
 
 /* Image size changes */
 
-// Add custom size
-add_action( 'after_setup_theme', function() {
-	add_image_size( 'grid', 600, 400, [ 'center', 'center' ] );
-});
-
 // Remove unnecessary sizes
 add_filter( 'intermediate_image_sizes_advanced', function( $sizes ) {
 	//if ( ! class_exists( 'WooCommerce' ) ) {
@@ -78,6 +73,11 @@ add_filter( 'intermediate_image_sizes_advanced', function( $sizes ) {
 		unset( $sizes['2048x2048'] );
 	//}
 	return $sizes;
+});
+
+// Add custom size
+add_action( 'after_setup_theme', function() {
+	add_image_size( 'grid', 600, 400, [ 'center', 'center' ] );
 });
 
 // Add custom sizes to media library menus
@@ -184,7 +184,7 @@ function itsme_disable_feed() {
 	wp_die( __( 'Nothing here! Please go back to the <a href="'. esc_url( home_url( '/' ) ) .'">homepage</a>!' ) );
 }
 if ( ! class_exists( 'WooCommerce' ) ) {
-	// If not a WooCommerce site -- change for alternate eCommerce solutions
+	// If not a WooCommerce site -- change code if these are needed for an alternate eCommerce solutions
 	add_action( 'do_feed', 'itsme_disable_feed', 1 );
 	add_action( 'do_feed_rdf', 'itsme_disable_feed', 1 );
 	add_action( 'do_feed_rss', 'itsme_disable_feed', 1 );
